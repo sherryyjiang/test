@@ -1,101 +1,69 @@
 import Image from "next/image";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const cats = [
+    {
+      breed: "Persian",
+      description: "Known for their long, luxurious coats and flat faces. Persians are sweet, gentle cats that prefer a calm environment.",
+      origin: "Iran (Persia)"
+    },
+    {
+      breed: "Siamese",
+      description: "Distinctive color points and blue eyes. Very vocal, intelligent, and social cats that form strong bonds with their owners.",
+      origin: "Thailand"
+    },
+    {
+      breed: "Maine Coon",
+      description: "One of the largest domestic cat breeds. Known for their thick fur, friendly personality, and distinctive chirping sounds.",
+      origin: "United States"
+    },
+    {
+      breed: "Bengal",
+      description: "Wild-looking cats with distinctive spotted or marbled coats. Highly active, playful, and intelligent.",
+      origin: "United States"
+    },
+    {
+      breed: "Ragdoll",
+      description: "Large, laid-back cats known for going limp when held. Very affectionate with beautiful blue eyes and color point coats.",
+      origin: "United States"
+    }
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
+      <main className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl text-center mb-12">
+          <span className="block">Cat Breeds</span>
+          <span className="block text-indigo-600 text-2xl sm:text-3xl mt-2 font-medium">Your Complete Guide</span>
+        </h1>
+        
+        <div className="mt-8 flex flex-col">
+          <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+              <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-2xl">
+                <table className="min-w-full divide-y divide-gray-300">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th scope="col" className="py-4 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Breed</th>
+                      <th scope="col" className="px-3 py-4 text-left text-sm font-semibold text-gray-900">Description</th>
+                      <th scope="col" className="px-3 py-4 text-left text-sm font-semibold text-gray-900">Origin</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200 bg-white">
+                    {cats.map((cat, index) => (
+                      <tr key={index} className="hover:bg-gray-50 transition-colors duration-200">
+                        <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-indigo-600 sm:pl-6">{cat.breed}</td>
+                        <td className="px-3 py-4 text-sm text-gray-700">{cat.description}</td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{cat.origin}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
